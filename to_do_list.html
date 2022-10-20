@@ -38,6 +38,7 @@
 
         #login{
             text-align: center;
+            display: inline;
         }
         #cadastro{
             text-align: center;
@@ -47,14 +48,6 @@
     </style>
 
     <h1 id="cadastro">Cadastro</h1>
-    <div id="login">
-        Digite seu nome: <input type="text"> <br> <br>
-        Digite seu email: <input type="text" placeholder="ex: nome@hotmail.com"> <br> <br>
-        Digite sua senha: <input type="text"> <br> <br>
-        Confirme sua senha: <input type="text"> 
-
-    </div>
-
 
     <center>
         <div id="titulo">
@@ -62,16 +55,30 @@
             <h1>To Do List</h1>
 
         </div>
+
+        <main style="display: none">
+
     <div id="divAdd">
         <input id="txt" type="text" placeholder="Digite sua tarefa">
         <button id="idBt" onclick="btAdd()">Adicionar</button>
 
     </div>
     <br>
+    
     <div id="tarefas">
      
 
     </div>
+    </main>
+
+    <div id="login">
+        Digite seu nome: <input type="text"> <br> <br>
+        Digite seu email: <input type="text" placeholder="ex: nome@hotmail.com"> <br> <br>
+        Digite sua senha: <input type="password"> <br> <br>
+        Confirme sua senha: <input type="password"> 
+
+    </div>
+
     <script>
 
 
