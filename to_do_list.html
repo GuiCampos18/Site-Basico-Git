@@ -44,6 +44,16 @@
             text-align: center;
             background-color: rgb(228, 186, 133) ;
         }
+
+        #nome, #email, #senha, #confsenha{
+            border-radius: 1px;
+        }
+
+        #botao{
+            background-color: grey;
+            color: rgb(228, 186, 133);
+        }
+        
         
     </style>
 
@@ -71,15 +81,45 @@
     </div>
     </main>
 
+    <form action="" id="formulario" method="POST" name="formulario">
     <div id="login">
-        Digite seu nome: <input type="text"> <br> <br>
-        Digite seu email: <input type="text" placeholder="ex: nome@hotmail.com"> <br> <br>
-        Digite sua senha: <input type="password"> <br> <br>
-        Confirme sua senha: <input type="password"> 
+        Digite seu nome: <input id="nome" name="nome" type="text"> <br> <br>
+
+        Digite seu email: <input id="email" name="email" type="email" placeholder="ex: nome@hotmail.com"> <br> <br>
+
+        Digite sua senha: <input id="senha" name="senha" type="password"> <br> <br>
+
+        Confirme sua senha: <input id="confsenha" name="confsenha" type="password"> <br> <br>
+        
+        <button id="botao" onclick="validar()"> Enter </button>
 
     </div>
+    </form>
 
     <script>
+
+        function validar(){
+
+            var nome = formulario.nome;
+            if (nome.value == ""){
+                alert ("Nome não informado!");
+                nome.focus();
+            }
+            var email = formulario.email;
+            if (email.value == ""){
+                alert ("Email não informado!");
+                email.focus();
+            }
+            var senha = formulario.senha;
+            if (senha.value == ""){
+                alert ("Senha não informada!");
+            }
+            var confsenha = formulario.confsenha;
+            if (confsenha.value == ""){
+                alert ("Confirme sua senha!");
+            }
+
+        }
 
 
         function btAdd() {
