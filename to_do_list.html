@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Lista de tarefas</title>
+</head>
+
+<body>
+    <style>
+        #tarefas {
+            background-color: wheat;
+            text-transform: uppercase;
+            
+            
+        }
+        .tarefas{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            padding: 10px;
+            
+        }
+
+
+        #idBt {
+            border-radius: 2px;
+            background-color: black;
+            color: aliceblue;
+        }
+
+        body{
+            background-color: antiquewhite;
+        }
+
+        #titulo{
+            background-color: rgb(228, 186, 133);
+        }
+
+        
+    </style>
+
+    <center>
+        <div id="titulo">
+
+            <h1>To Do List</h1>
+
+        </div>
+    <div id="divAdd">
+        <input id="txt" type="text" placeholder="Digite sua tarefa">
+        <button id="idBt" onclick="btAdd()">Adicionar</button>
+
+    </div>
+    <br>
+    <div id="tarefas">
+     
+
+    </div>
+    <script>
+
+
+        function btAdd() {
+           
+            var conteudo = document.getElementById('txt').value;
+            var novoElemento = document.createTextNode(conteudo);
+            var divNova = document.createElement('div');
+            divNova.className = "tarefas";
+            var botao = document.createElement('button');
+            var botaoEditar = document.createElement('button');
+            var check = document.createElement('input');
+            check.setAttribute("type",
+            "checkbox");
+            
+            botaoEditar.innerHTML = "Editar";
+            botaoEditar.addEventListener('click',
+         
+                function () {
+                    document.getElementById('txt').value = conteudo;
+                    divNova.remove();
+
+                })
+            botao.innerHTML = "Remover";
+            botao.addEventListener('click',
+                function () {
+                    divNova.remove();
+                })
+                
+            divNova.appendChild(check);
+            check.addEventListener('change', 
+            function(){
+                if(this.checked){
+                    divNova.style.textDecoration = "line through";
+                }else{
+                    divNova.style.textDecoration = "none";
+                }
+            })
+
+            divNova.appendChild(novoElemento);
+            divNova.appendChild(botaoEditar);
+            divNova.appendChild(botao);
+            document.getElementById('tarefas').appendChild(divNova);
+            document.getElementById('txt').value = "";
+            
+            botaoEditar.style.backgroundColor = "#B2A149";
+            botaoEditar.style.borderRadius = "10px";
+            botao.style.backgroundColor = "#B2A149";
+            botao.style.borderRadius = "10px";
+            botaoEditar.style.boxShadow = " 5px 3px #A7963F";
+            botao.style.boxShadow = " 5px 3px #A7963F";
+            
+            
+          
+            
+        }
+        
+    
+
+
+    </script>
+
+</center>
+
+
+
+
+
+
+</body>
+
+</html>
