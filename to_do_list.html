@@ -10,15 +10,16 @@
         #tarefas {
             background-color: wheat;
             text-transform: uppercase;
-            
-            
+
+
         }
-        .tarefas{
+
+        .tarefas {
             display: flex;
             flex-direction: row;
             justify-content: space-evenly;
             padding: 10px;
-            
+
         }
 
 
@@ -28,33 +29,72 @@
             color: aliceblue;
         }
 
-        body{
+        body {
             background-color: antiquewhite;
         }
 
-        #titulo{
+        #titulo {
             background-color: rgb(228, 186, 133);
         }
 
-        #login{
+        #cadast {
             text-align: center;
             display: inline;
+            display:flex;
+            flex-direction:row;
+            justify-content: space-evenly;
+            padding: 20px;
         }
-        #cadastro{
-            text-align: center;
-            background-color: rgb(228, 186, 133) ;
+        #nome,
+        #login, 
+        #email,
+        #senha,
+        #confsenha 
+        {
+            height: 15px;
         }
 
-        #nome, #email, #senha, #confsenha{
+        #cadastro {
+            text-align: center;
+            background-color: rgb(228, 186, 133);
+        }
+
+        #nome,
+        #email,
+        #senha,
+        #confsenha
+        #login {
             border-radius: 1px;
         }
 
-        #botao{
+        .botao {
+            border-radius: 4px;
             background-color: grey;
-            color: rgb(228, 186, 133);
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 20px;
+            padding: 20px;
+            width: 200px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
         }
-        
-        
+
+        .botao:hover span {
+            padding-right: 25px;
+
+        }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+
+        }
     </style>
 
     <h1 id="cadastro">Cadastro</h1>
@@ -68,120 +108,131 @@
 
         <main style="display: none">
 
-    <div id="divAdd">
-        <input id="txt" type="text" placeholder="Digite sua tarefa">
-        <button id="idBt" onclick="btAdd()">Adicionar</button>
+            <div id="divAdd">
+                <input id="txt" type="text" placeholder="Digite sua tarefa">
+                <button id="idBt" onclick="btAdd()">Adicionar</button>
 
-    </div>
-    <br>
-    
-    <div id="tarefas">
-     
+            </div>
+            <br>
 
-    </div>
-    </main>
-
-    <form action="" id="formulario" method="POST" name="formulario">
-    <div id="login">
-        Digite seu nome: <input id="nome" name="nome" type="text"> <br> <br>
-
-        Digite seu email: <input id="email" name="email" type="email" placeholder="ex: nome@hotmail.com"> <br> <br>
-
-        Digite sua senha: <input id="senha" name="senha" type="password"> <br> <br>
-
-        Confirme sua senha: <input id="confsenha" name="confsenha" type="password"> <br> <br>
-        
-        <button id="botao" onclick="validar()"> Enter </button>
-
-    </div>
-    </form>
-
-    <script>
-
-        function validar(){
-
-            var nome = formulario.nome;
-            if (nome.value == ""){
-                alert ("Nome não informado!");
-                nome.focus();
-            }
-            var email = formulario.email;
-            if (email.value == ""){
-                alert ("Email não informado!");
-                email.focus();
-            }
-            var senha = formulario.senha;
-            if (senha.value == ""){
-                alert ("Senha não informada!");
-            }
-            var confsenha = formulario.confsenha;
-            if (confsenha.value == ""){
-                alert ("Confirme sua senha!");
-            }
-
-        }
+            <div id="tarefas">
 
 
-        function btAdd() {
-           
-            var conteudo = document.getElementById('txt').value;
-            var novoElemento = document.createTextNode(conteudo);
-            var divNova = document.createElement('div');
-            divNova.className = "tarefas";
-            var botao = document.createElement('button');
-            var botaoEditar = document.createElement('button');
-            var check = document.createElement('input');
-            check.setAttribute("type",
-            "checkbox");
-            
-            botaoEditar.innerHTML = "Editar";
-            botaoEditar.addEventListener('click',
-         
-                function () {
-                    document.getElementById('txt').value = conteudo;
-                    divNova.remove();
+            </div>
+        </main>
 
-                })
-            botao.innerHTML = "Remover";
-            botao.addEventListener('click',
-                function () {
-                    divNova.remove();
-                })
-                
-            divNova.appendChild(check);
-            check.addEventListener('change', 
-            function(){
-                if(this.checked){
-                    divNova.style.textDecoration = "line through";
-                }else{
-                    divNova.style.textDecoration = "none";
+        <form action="" id="formulario" method="POST" name="formulario">
+            <div id="cadast">
+                Digite seu nome: <input id="nome" name="nome" type="text"> <br> <br>
+
+                Login: <input id="login" name="login" type="text"> <br><br>
+
+                Digite seu email: <input id="email" name="email" type="email" placeholder="ex: nome@hotmail.com"> <br>
+                <br>
+
+                Digite sua senha: <input id="senha" name="senha" type="password"> <br> <br>
+
+                Confirme sua senha: <input id="confsenha" name="confsenha" type="password"> <br> <br>
+
+                <button class="botao" onclick="validar()"> Enter </button>
+
+            </div>
+        </form>
+
+        <script>
+
+            function validar() {
+
+                var nome = formulario.nome;
+                if (nome.value == "") {
+                    alert("Nome não informado!");
+                    nome.focus();
+                } else if (nome.value < 10) {
+                    alert("O nome informado deve ter no mínimo 10 caracteres!");
+                    nome.focus();
                 }
-            })
+                var login = formulario.login
+                if (login.value == ""){
+                    alert ("Informe o login!");
+                    login.focus();
+                }
+                var email = formulario.email;
+                if (email.value == "") {
+                    alert("Email não informado!");
+                    email.focus();
+                }
+                var senha = formulario.senha;
+                if (senha.value == "") {
+                    alert("Senha não informada!");
+                }
+                var confsenha = formulario.confsenha;
+                if (confsenha.value == "") {
+                    alert("Confirme sua senha!");
+                }
 
-            divNova.appendChild(novoElemento);
-            divNova.appendChild(botaoEditar);
-            divNova.appendChild(botao);
-            document.getElementById('tarefas').appendChild(divNova);
-            document.getElementById('txt').value = "";
-            
-            botaoEditar.style.backgroundColor = "#B2A149";
-            botaoEditar.style.borderRadius = "10px";
-            botao.style.backgroundColor = "#B2A149";
-            botao.style.borderRadius = "10px";
-            botaoEditar.style.boxShadow = " 5px 3px #A7963F";
-            botao.style.boxShadow = " 5px 3px #A7963F";
-            
-            
-          
-            
-        }
-        
-    
+            }
 
 
-    </script>
+            function btAdd() {
 
-</center>
+                var conteudo = document.getElementById('txt').value;
+                var novoElemento = document.createTextNode(conteudo);
+                var divNova = document.createElement('div');
+                divNova.className = "tarefas";
+                var botao = document.createElement('button');
+                var botaoEditar = document.createElement('button');
+                var check = document.createElement('input');
+                check.setAttribute("type",
+                    "checkbox");
+
+                botaoEditar.innerHTML = "Editar";
+                botaoEditar.addEventListener('click',
+
+                    function () {
+                        document.getElementById('txt').value = conteudo;
+                        divNova.remove();
+
+                    })
+                botao.innerHTML = "Remover";
+                botao.addEventListener('click',
+                    function () {
+                        divNova.remove();
+                    })
+
+                divNova.appendChild(check);
+                check.addEventListener('change',
+                    function () {
+                        if (this.checked) {
+                            divNova.style.textDecoration = "line through";
+                        } else {
+                            divNova.style.textDecoration = "none";
+                        }
+                    })
+
+                divNova.appendChild(novoElemento);
+                divNova.appendChild(botaoEditar);
+                divNova.appendChild(botao);
+                document.getElementById('tarefas').appendChild(divNova);
+                document.getElementById('txt').value = "";
+
+                botaoEditar.style.backgroundColor = "#B2A149";
+                botaoEditar.style.borderRadius = "10px";
+                botao.style.backgroundColor = "#B2A149";
+                botao.style.borderRadius = "10px";
+                botaoEditar.style.boxShadow = " 5px 3px #A7963F";
+                botao.style.boxShadow = " 5px 3px #A7963F";
+
+
+
+
+            }
+
+
+
+
+        </script>
+
+    </center>
 
 
 
