@@ -123,16 +123,16 @@
 
         <form action="" id="formulario" method="POST" name="formulario">
             <div id="cadast">
-                Digite seu nome: <input id="nome" name="nome" type="text"> <br> <br>
+                Digite seu nome: <input id="nome" name="nome" type="text" required maxlength="10"> <br> <br>
 
-                Login: <input id="login" name="login" type="text"> <br><br>
+                Login: <input id="login" name="login" type="text" required minlength="10"> <br><br>
 
-                Digite seu email: <input id="email" name="email" type="email" placeholder="ex: nome@hotmail.com"> <br>
+                Digite seu email: <input id="email" name="email" type="email" placeholder="ex: nome@hotmail.com" required="@"> <br>
                 <br>
 
-                Digite sua senha: <input id="senha" name="senha" type="password"> <br> <br>
+                Digite sua senha: <input id="senha" name="senha" type="password" required minlength="3"> <br> <br>
 
-                Confirme sua senha: <input id="confsenha" name="confsenha" type="password"> <br> <br>
+                Confirme sua senha: <input id="confsenha" name="confsenha" type="password" required minlength="3"> <br> <br>
 
                 <button class="botao" onclick="validar()"> Enter </button>
 
@@ -143,33 +143,14 @@
 
             function validar() {
 
-                var nome = formulario.nome;
-                if (nome.value == "") {
-                    alert("Nome não informado!");
-                    nome.focus();
-                } else if (nome.value < 10) {
-                    alert("O nome informado deve ter no mínimo 10 caracteres!");
-                    nome.focus();
-                }
-                var login = formulario.login
-                if (login.value == ""){
-                    alert ("Informe o login!");
-                    login.focus();
-                }
-                var email = formulario.email;
-                if (email.value == "") {
-                    alert("Email não informado!");
-                    email.focus();
-                }
-                var senha = formulario.senha;
-                if (senha.value == "") {
-                    alert("Senha não informada!");
-                }
-                var confsenha = formulario.confsenha;
-                if (confsenha.value == "") {
-                    alert("Confirme sua senha!");
-                }
-
+               var senha = formulario.senha;
+               var confsenha = formulario.confsenha;
+                
+                if (senha.value != confsenha.value) {
+                   confsenha.setCustomValidity("As senhas são diferentes");
+                   return false; 
+                } 
+                return true;
             }
 
 
