@@ -40,7 +40,7 @@
         #cadast {
             text-align: center;
             display: inline;
-            display:flex;
+            display:;
             flex-direction:row;
             justify-content: space-evenly;
             padding: 20px;
@@ -123,16 +123,16 @@
 
         <form action="" id="formulario" method="POST" name="formulario">
             <div id="cadast">
-                Digite seu nome: <input id="nome" name="nome" type="text" required maxlength="10"> <br> <br>
+                Digite seu nome: <input class="campo" id="nome" name="nome" type="text" required maxlength="10"> <br> <br>
 
-                Login: <input id="login" name="login" type="text" required minlength="10"> <br><br>
+                Login: <input class="campo" id="login" name="login" type="text" required minlength="10"> <br><br>
 
-                Digite seu email: <input id="email" name="email" type="email" placeholder="ex: nome@hotmail.com" required="@"> <br>
+                Digite seu email: <input class="campo" id="email" name="email" type="email" placeholder="ex: nome@hotmail.com" required="@"> <br>
                 <br>
 
-                Digite sua senha: <input id="senha" name="senha" type="password" required minlength="3"> <br> <br>
+                Digite sua senha: <input class="campo" id="senha" name="senha" type="password" required minlength="3"> <br> <br>
 
-                Confirme sua senha: <input id="confsenha" name="confsenha" type="password" required minlength="3"> <br> <br>
+                Confirme sua senha: <input class="campo" id="confsenha" name="confsenha" type="password" required minlength="3"> <br> <br>
 
                 <button class="botao" onclick="validar()"> Enter </button>
 
@@ -202,6 +202,14 @@
                 botao.style.boxShadow = " 5px 3px #A7963F";
 
             }
+        </script>
+
+        <script>
+           var formulario = document.getElementById("formulario");
+           var input = document.getElementsByClassName("campo");
+           form.addEventListener('submit', function(e){
+            alert(campo.value);
+           });
         </script>
 
     </center>
