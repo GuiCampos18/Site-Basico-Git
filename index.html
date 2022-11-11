@@ -108,22 +108,8 @@
 
         </div>
 
-        <main style="display: none">
 
-            <div id="divAdd">
-                <input id="txt" type="text" placeholder="Digite sua tarefa">
-                <button id="idBt" onclick="btAdd()">Adicionar</button>
-
-            </div>
-            <br>
-
-            <div id="tarefas">
-
-
-            </div>
-        </main>
-
-        <form action="tarefas.html" id="formulario" method="POST" name="formulario">
+        <form action="" id="formulario"  name="formulario" method="get">
             <div id="cadast">
                <p> Digite seu nome: </p>
 
@@ -150,12 +136,23 @@
         </form>
 
         <script>
+            
+            function validar(){
+                var valor = document.getElementById("nome").value;
+                alert ("Você digitou ", +valor);
+            }
+
+
+        </script>
+
+        <script>
+
 
             function validar() {
 
                var senha = formulario.senha;
                var confsenha = formulario.confsenha;
-               var mostrar = document.getElementById("divAdd").value;
+              
                
                 
                 if (senha.value != confsenha.value) {
