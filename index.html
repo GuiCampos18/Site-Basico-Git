@@ -93,9 +93,11 @@
             transition: 0.5s;
         }
 
+       
 
-        }
+        
     </style>
+    
 
     <h1 id="cadastro">Cadastro</h1>
 
@@ -123,7 +125,6 @@
 
         <form action="tarefas.html" id="formulario" method="POST" name="formulario">
             <div id="cadast">
-<<<<<<< HEAD
                <p> Digite seu nome: </p>
 
                <input id="nome" name="nome" type="text" required maxlength="10"> <br> 
@@ -133,18 +134,6 @@
                 <input id="login" name="login" type="text" required minlength="10"> <br>
 
                <p>  Digite seu email:  </p> 
-=======
-                Digite seu nome: <input class="campo" id="nome" name="nome" type="text" required maxlength="10"> <br> <br>
-
-                Login: <input class="campo" id="login" name="login" type="text" required minlength="10"> <br><br>
-
-                Digite seu email: <input class="campo" id="email" name="email" type="email" placeholder="ex: nome@hotmail.com" required="@"> <br>
-                <br>
-
-                Digite sua senha: <input class="campo" id="senha" name="senha" type="password" required minlength="3"> <br> <br>
-
-                Confirme sua senha: <input class="campo" id="confsenha" name="confsenha" type="password" required minlength="3"> <br> <br>
->>>>>>> 8392774c515b42fc458121c29e2503c07e714480
 
                 <input id="email" name="email" type="email" placeholder="ex: nome@hotmail.com" required="@"> <br>
             
@@ -157,7 +146,7 @@
                 <input id="confsenha" name="confsenha" type="password" required minlength="3"> <br>
             
             </div>
-            <button type="submit" class="botao" onclick="validar()"> Enter </button>
+            <input type="submit" class="botao" onclick="validar()" value="Enviar"> 
         </form>
 
         <script>
@@ -226,14 +215,9 @@
                 botao.style.boxShadow = " 5px 3px #A7963F";
 
             }
-        </script>
 
-        <script>
-           var formulario = document.getElementById("formulario");
-           var input = document.getElementsByClassName("campo");
-           form.addEventListener('submit', function(e){
-            alert(campo.value);
-           });
+            
+
         </script>
 
     </center>
