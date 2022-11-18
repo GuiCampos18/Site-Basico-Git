@@ -53,7 +53,7 @@
 
             z-index: 99;
         }
-        
+
         nav a {
             color: #fff;
 
@@ -71,7 +71,7 @@
 
             margin-left: 20px;
         }
-        
+
         nav ul {
             color: #fff;
 
@@ -87,13 +87,79 @@
     <nav>
         <a href="dadoscad.html">Dados Cadastrados</a>
         <a href="index.html">Cadastro</a>
-        
-        <ul><h3>To Do List</h3></ul>
-              
-    </nav> 
-    <br> <br>
+
+        <ul>
+            <h3>To Do List</h3>
+        </ul>
+
+    </nav>
+    <br> <br> <br>
 
     <center>
+
+        <form action="tarefas.html" id="formulario" name="formulario" method="get">
+            <div id="cadast">
+                <p> Digite seu nome: </p>
+
+                <input id="nome" name="name" type="text" required maxlength="10"> <br>
+
+                <p> Login: </p>
+
+                <input id="login" name="login" type="text" required minlength="10"> <br>
+
+                <p> Digite seu email: </p>
+
+                <input id="email" name="email" type="email" placeholder="ex: nome@hotmail.com" required="@"> <br>
+
+                <p> Digite sua senha: </p>
+
+                <input id="senha" name="senha" type="password" required minlength="3"> <br>
+
+                <p> Confirme sua senha: </p>
+
+                <input id="confsenha" name="confsenha" type="password" required minlength="3"> <br>
+
+            </div>
+            <input type="submit" class="botao" onclick="validar()" value="Enviar">
+        </form>
+
+        
+
+        <script>
+
+            function validar() {
+                var valor = document.getElementById("nome").value;
+                alert("Você digitou ", +valor);
+            }
+
+
+        </script>
+
+        <script>
+            function validar() {
+
+                var senha = formulario.senha;
+                var confsenha = formulario.confsenha;
+
+
+                if (senha.value != confsenha.value) {
+                    confsenha.setCustomValidity("As senhas são diferentes");
+                    return false;
+                }
+
+                var nome = document.getElementById("nome").value;
+                document.getElementById('mostrarnome').innerHTML = nome;
+
+                var login = document.getElementById("login").value;
+                document.getElementById('mostrarlogin').innerHTML = login;
+
+                var email = document.getElementById("email").value;
+                document.getElementById('mostraremail').innerHTML = email;
+
+            }
+            </script>
+
+        <main style="display: none;">
 
         <div id="titulo">
 
@@ -110,8 +176,11 @@
 
         <div id="tarefas">
 
-
         </div>
+        </main>
+
+
+
 
 
         <script>
