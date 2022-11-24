@@ -23,7 +23,7 @@
         }
 
 
-        #idBt {
+        .idBt {
             border-radius: 2px;
             background-color: black;
             color: aliceblue;
@@ -92,9 +92,6 @@
             position: relative;
             transition: 0.5s;
         }
-
-       
-
         
     </style>
     
@@ -103,22 +100,30 @@
 
     <center>
 
-        <nav>
-            <a href="dadoscad.html">Dados Cadastrados</a>
-            <a href="index.html">Cadastro</a>
+        <nav id="nav" style="display: none;">
+            <button id="btExibir" class="idBt" onclick="exibirDados()"> Dados de Login</button> <br>
+            <div id="dadoslogin" style="display: none;">
+                <p id="mostrarnome"></p>
+                <p id="mostrarlogin"></p> 
+                <p id="mostraremail"></p> 
+            </div>
+            <br>
+            <a href="index.html">
+                <button class="idBt">Cadastro</button>
+            </a>
             
-            <ul><h3>To Do List</h3></ul>
+            <!-- <ul><h3>To Do List</h3></ul> -->
                   
         </nav> 
-        <div id="titulo">
+        
+            <h1 id="titulo">To Do List</h1>
 
-            <h1>To Do List</h1>
-
-        </div>
+        
 
 
-    <main id="areacadastro">
-        <form action="" id="formulario"  name="formulario" method="get">
+
+    <main id="areacadastro" style="display: block;">
+        <form action="" id="form">
             <div id="cadast">
                <p> Digite seu nome: </p>
 
@@ -130,7 +135,7 @@
 
                <p>  Digite seu email:  </p> 
 
-                <input id="email" name="email" type="email" placeholder="ex: nome@hotmail.com" required="@"> <br>
+                <input id="email" name="email" type="email" required placeholder="ex: nome@hotmail.com" > <br>
             
                 <p> Digite sua senha:  </p> 
 
@@ -138,61 +143,112 @@
 
                 <p> Confirme sua senha: </p> 
 
-                <input id="confsenha" name="confsenha" type="password" required minlength="3"> <br>
+                <input id="confsenha" name="confsenha" type="password" required  minlength="3"> <br>
             
             </div>
-            <input type="submit" class="botao" onclick="validar()" value="Enviar"> 
-            <input type="sub" name="" id="">
+            <!-- <input type="submit" class="botao" onclick="validar()" value="Enviar"> --> 
+            
         </form>
+        <button type="submit" class="botao" onclick="validar()">Enter</button>
+        
     </main>
 
-
         <main id="todolist" style="display: none;">
-    
             <div id="divAdd">
-                <input id="txt" type="text" placeholder="Digite sua tarefa">
-                <button id="idBt" onclick="btAdd()">Adicionar</button>
-    
+                <form action="">
+                <input id="txt" type="text" placeholder="Digite sua tarefa" required>
+                <button type="submit" class="idBt" onclick="btAdd()">Adicionar</button>
+                </form>
             </div>
             <br>
     
             <div id="tarefas">
     
             </div>
-            </main>
-
+        </main>
 
         <script>
 
             function validar() {
 
-               var senha = formulario.senha;
-               var confsenha = formulario.confsenha;
-               if (senha.value != confsenha.value) {
-                   confsenha.setCustomValidity("As senhas são diferentes");
-                   return false; 
-                } 
+               var senha = document.getElementById('senha').value;
+               var confsenha = document.getElementById('confsenha').value
+              //  var confsenha = formulario.confsenha;
 
                var nome = document.getElementById('nome').value;
                var login = document.getElementById('login').value;
                var email = document.getElementById('email').value;
 
-               
-                var cadastro = document.getElementById('areacadastro').style.display = 'none';
-                var todolist = document.getElementById('todolist').style.display = 'block';
-                
-                   
+               //if (senha.value != confsenha.value) {
+                  // confsenha.setCustomValidity("As senhas são diferentes");
+                  
+                //}
+
+                if (nome == "") {
+                    nome.setCustomValidity("Preencha este campo!");
+    
+                }
+                //else if (nome.length > 10){
+                  //  nome.setCustomValidity("O nome deve conter no máximo 10 caracteres!");
+               // }
+                else if (login == "") {
+                    login.setCustomValidity("Preencha este campo!");
+                }
+                else if (login.length < 10) {
+                    login.setCustomValidity('Deve conter mais de 10 caarcteres!');
+                }
+                else if (email == "") {
+                    email.setCustomValidity("Preencha este campo!");
+                }
+                else if (senha == "") {
+                    senha.setCustomValidity("Preencha este campo!");
+                }
+                else if (confsenha == "") {
+                    confsenha.setCustomValidity("Preencha este campo!");
+                }
+                else if (confsenha!=senha) {
+                    confsenha.setCustomValidity('As senhas são diferentes!');
+                }
+                else{
+                     document.getElementById('areacadastro').style.display = 'none';
+                     document.getElementById('todolist').style.display = 'block';
+                     document.getElementById('nav').style.display = 'block';
+                     document.getElementById('cadastro').innerHTML = 'To Do List';
+                     document.getElementById('titulo').innerHTML = 'Área de Tarefas';
+
+                    document.getElementById('mostrarnome').innerHTML = nome;
+                    document.getElementById('mostrarlogin').innerHTML = login;
+                    document.getElementById('mostraremail').innerHTML = email;
+                }
 
             }
+
+            function exibirDados(){
+                    var dadosLogin = document.getElementById('dadoslogin');
+                     if (dadosLogin.style.display == 'none'){
+                        dadosLogin.style.display = 'block';
+                    } 
+                    else {
+                        dadosLogin.style.display = 'none';
+                    }
+                }
+
             function btAdd() {
+            
 
                 var conteudo = document.getElementById('txt').value;
+                    if (conteudo == ""){
+                        txt.setCustomValidity('Preencha este campo!');
+                    }
+                    else {
+                         
                 var novoElemento = document.createTextNode(conteudo);
                 var divNova = document.createElement('div');
                 divNova.className = "tarefas";
                 var botao = document.createElement('button');
                 var botaoEditar = document.createElement('button');
                 var check = document.createElement('input');
+                    }
                 check.setAttribute("type",
                     "checkbox");
 
