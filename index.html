@@ -66,7 +66,7 @@
 
         .botao {
             border-radius: 4px;
-            background-color: grey;
+            background-color: black;
             border: none;
             color: #FFFFFF;
             text-align: center;
@@ -196,7 +196,7 @@
                     confsenha.setCustomValidity("Preencha este campo!");
                 }
                 else if (confsenha!=senha) {
-                    confsenha.setCustomValidity('As senhas são diferentes!');
+                    alert('As senhas são diferentes!');
                 }
                 else{
                      document.getElementById('areacadastro').style.display = 'none';
